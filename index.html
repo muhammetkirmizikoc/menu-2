@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menü-2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <body>
+        <section class="menu">
+            <!--Tittle Section-->
+            <div class="title">
+                <h2>MENU</h2>
+                <div class="underline"></div>
+            </div>
+            <!--Filtering Buttons-->
+            <div class="btn-container"></div>
+
+            <!--Menu Items-->
+
+            <div class="center-section">
+                <!-- Individual Item-->
+
+            </div>
+        </section>
+        <!-- javascript -->
+        <script>
+            const menu = [
+                , {
+                    id: 1,
+                    title: "Kaşarlı Makarna",
+                    category: "Ana",
+                    price: 10.99,
+                    img: "https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1662&q=80",
+                    desc: "Mutfakların büyülü dünyasında, her bir tabak kendi hikayesini anlatır. İşte o hikayelerden biri de makarnanın enfes lezzetidir.",
+                }, {
+                    id: 1,
+                    title: "Kaşarlı Makarna",
+                    category: "Ana",
+                    price: 10.99,
+                    img: "https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1662&q=80",
+                    desc: "Mutfakların büyülü dünyasında, her bir tabak kendi hikayesini anlatır. İşte o hikayelerden biri de makarnanın enfes lezzetidir.",
+                }, {
+                    id: 1,
+                    title: "Kaşarlı Makarna",
+                    category: "Ana",
+                    price: 10.99,
+                    img: "https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1662&q=80",
+                    desc: "Mutfakların büyülü dünyasında, her bir tabak kendi hikayesini anlatır. İşte o hikayelerden biri de makarnanın enfes lezzetidir.",
+                },
+                {
+                    id: 2,
+                    title: "İçecek",
+                    category: "İçecek",
+                    price: 5.99,
+                    img: "https://images.unsplash.com/photo-1497534446932-c925b458314e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1072&q=80",
+                    desc: "Serinletici bir içecek olan buzlu çay, sıcak günlerin vazgeçilmezleri arasında yer alır.",
+                },{
+                    id: 2,
+                    title: "İçecek",
+                    category: "İçecek",
+                    price: 5.99,
+                    img: "https://images.unsplash.com/photo-1497534446932-c925b458314e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1072&q=80",
+                    desc: "Serinletici bir içecek olan buzlu çay, sıcak günlerin vazgeçilmezleri arasında yer alır.",
+                },{
+                    id: 2,
+                    title: "Tatlı",
+                    category: "Tatlılar",
+                    price: 5.99,
+                    img: "https://images.unsplash.com/photo-1533910534207-90f31029a78e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFN3ZWV0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+                    desc: "Serinletici bir içecek olan buzlu çay, sıcak günlerin vazgeçilmezleri arasında yer alır.",
+                },{
+                    id: 2,
+                    title: "Tatlı",
+                    category: "Tatlılar",
+                    price: 5.99,
+                    img: "https://images.unsplash.com/photo-1533910534207-90f31029a78e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFN3ZWV0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+                    desc: "Serinletici bir içecek olan buzlu çay, sıcak günlerin vazgeçilmezleri arasında yer alır.",
+                },
+            ];
+
+            const centerSection = document.querySelector(".center-section");
+            const btnContainer = document.querySelector('.btn-container');
+
+            //Loading The Items
+            window.addEventListener('DOMContentLoaded', function () {
+                displayItems(menu);
+                displayButtons();
+            });
+
+            function displayItems(menuItems) {
+                let displayedMenu = menuItems.map(function (item) {
+                    //console.log(item);
+                    //Dynamically populating the menu items using basic html and links using $ and attribute
+                    return `<article class="menu-item">
+          <img src=${item.img} alt=${item.title} class="photo" />
+          <div class="item-info">
+            <header>
+              <h4>${item.title}</h4>
+              <h4 class="price">₺${item.price}</h4>
+            </header>
+            <p class="item-text">
+              ${item.desc}
+            </p>
+          </div>
+        </article>`;
+                });
+                displayedMenu = displayedMenu.join(""); //This empty space is for avoiding a comma between the items
+
+                centerSection.innerHTML = displayedMenu; //Placing everything in the center section
+            }
+
+            function displayButtons() {
+                const categories = menu.reduce(
+                    function (values, item) {
+                        if (!values.includes(item.category)) {
+                            values.push(item.category);
+                        }
+                        return values;
+                    },
+                    ["Menü"]
+                );
+
+                const categoryButtons = categories
+                    .map(function (category) {
+                        return `<button class="filtering-btn" type="button"data-id=${category}> 
+        ${category}</button>`;
+                    })
+                    .join("");
+
+                btnContainer.innerHTML = categoryButtons;
+                const filteringBtns = btnContainer.querySelectorAll(".filtering-btn");
+                console.log(filteringBtns);
+
+                filteringBtns.forEach(function (btn) {
+                    btn.addEventListener("click", function (e) {
+                        const category = e.currentTarget.dataset.id; //Doing this for reference and editing purposes if I need a specific item
+                        const menuCategory = menu.filter(function (menuItem) {
+                            if (menuItem.category === category) {
+                                return menuItem;
+                            }
+                        });
+                        if (category === "Menü") {
+                            displayItems(menu);
+                        } else {
+                            displayItems(menuCategory);
+                        }
+                    });
+                });
+            }
+
+
+        </script>
+    </body>
+
+</html>
+
+</body>
+
+</html>
